@@ -1,0 +1,163 @@
+/* Nombre: Sabas G. De la Mota... Matricula: 16-SIIT-1-039.... Seccion: 0541*/
+
+USE [master]
+GO
+/****** Object:  Database [AlmacenElectro]    Script Date: 24/8/2023 10:01:10 p. m. ******/
+CREATE DATABASE [AlmacenElectro]
+
+USE [AlmacenElectro]
+GO
+/****** Object:  Table [dbo].[Categoria]    Script Date: 24/8/2023 10:01:10 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Clase](
+	[idCategoria] [int] NOT NULL,
+	[nombreCategoria] [varchar](50) NULL,
+ CONSTRAINT [PK_Categoria] PRIMARY KEY CLUSTERED 
+(
+	[idCategoria] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Cliente]    Script Date: 24/8/2023 10:01:10 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuario](
+	[idCliente] [int] NOT NULL,
+	[nombreCliente] [varchar](50) NULL,
+	[direccionCliente] [varchar](100) NULL,
+ CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
+(
+	[idCliente] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DetalleVenta]    Script Date: 24/8/2023 10:01:10 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DatoVenta](
+	[idDetalleVenta] [int] NOT NULL,
+	[idVenta] [int] NULL,
+	[idProducto] [int] NULL,
+	[cantidad] [int] NULL,
+ CONSTRAINT [PK_DetalleVenta] PRIMARY KEY CLUSTERED 
+(
+	[idDetalleVenta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Productos]    Script Date: 24/8/2023 10:01:10 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Articulos](
+	[idProductos] [int] NOT NULL,
+	[nombreProductos] [varchar](50) NULL,
+	[idCategoria] [int] NULL,
+ CONSTRAINT [PK_Productos] PRIMARY KEY CLUSTERED 
+(
+	[idProductos] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Venta]    Script Date: 24/8/2023 10:01:10 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Despacho](
+	[idVenta] [int] NOT NULL,
+	[idCliente] [int] NULL,
+	[fachaVenta] [date] NULL,
+ CONSTRAINT [PK_Venta] PRIMARY KEY CLUSTERED 
+(
+	[idVenta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (1, N'Electrodomésticos de cocina')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (2, N'Electrodomésticos de limpieza')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (3, N'Electrodomésticos de entretenimiento')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (4, N'Electrodomésticos de cuidado personal')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (5, N'Electrodomésticos Higiene')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (6, N'Pequeño Electrodomesticos')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (7, N'Accesorios')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (8, N'Articulos Para Exterior')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (9, N'Articulos Para Autos')
+INSERT [dbo].[Categoria] ([idCategoria], [nombreCategoria]) VALUES (10, N'Decoracion')
+GO
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (1, N'Juan Perez', N'Guarocuya 25')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (2, N'Maria Gomez', N'Arroyo Hondo 42')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (3, N'Nelson Cruz', N'Independencia 85')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (4, N'Rafael Romero', N'Los Prados 90')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (5, N'Josefa Brea', N'Los guandules 22')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (6, N'Diana Martes', N'Los Mina 33')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (7, N'Leidi Moncion', N'Villa Mella 18')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (8, N'Junior Tavares', N'Los Girasoles 77')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (9, N'Jose Antonio', N'Los Rios 103')
+INSERT [dbo].[Cliente] ([idCliente], [nombreCliente], [direccionCliente]) VALUES (10, N'Arturo Alvarado', N'Maximo Gomez 3')
+GO
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (1, 1, 3, 2)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (2, 2, 8, 1)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (3, 3, 1, 3)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (4, 3, 4, 1)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (5, 4, 5, 2)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (6, 5, 7, 1)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (7, 6, 10, 2)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (8, 7, 2, 1)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (9, 8, 3, 1)
+INSERT [dbo].[DetalleVenta] ([idDetalleVenta], [idVenta], [idProducto], [cantidad]) VALUES (10, 9, 6, 1)
+GO
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (1, N'Memoria USB', 7)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (2, N'Aspiradora', 2)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (3, N'Televisor', 3)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (4, N'Secador de pelo', 4)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (5, N'Lavadora', 5)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (6, N'Comedor Para Jardin', 8)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (7, N'Florero', 10)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (8, N'Nevera', 1)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (9, N'Celular', 6)
+INSERT [dbo].[Productos] ([idProductos], [nombreProductos], [idCategoria]) VALUES (10, N'Radio Para Autos', 9)
+GO
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (1, 3, CAST(N'2023-08-01' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (2, 1, CAST(N'2023-03-25' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (3, 6, CAST(N'2023-05-29' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (4, 5, CAST(N'2023-05-21' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (5, 2, CAST(N'2023-05-05' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (6, 4, CAST(N'2023-04-28' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (7, 7, CAST(N'2023-07-15' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (8, 9, CAST(N'2023-02-02' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (9, 8, CAST(N'2023-02-02' AS Date))
+INSERT [dbo].[Venta] ([idVenta], [idCliente], [fachaVenta]) VALUES (10, 10, CAST(N'2023-02-02' AS Date))
+GO
+ALTER TABLE [dbo].[DetalleVenta]  WITH CHECK ADD  CONSTRAINT [FK_DetalleVenta_Productos] FOREIGN KEY([idProducto])
+REFERENCES [dbo].[Productos] ([idProductos])
+GO
+ALTER TABLE [dbo].[DetalleVenta] CHECK CONSTRAINT [FK_DetalleVenta_Productos]
+GO
+ALTER TABLE [dbo].[DetalleVenta]  WITH CHECK ADD  CONSTRAINT [FK_DetalleVenta_Venta] FOREIGN KEY([idVenta])
+REFERENCES [dbo].[Venta] ([idVenta])
+GO
+ALTER TABLE [dbo].[DetalleVenta] CHECK CONSTRAINT [FK_DetalleVenta_Venta]
+GO
+ALTER TABLE [dbo].[Productos]  WITH CHECK ADD  CONSTRAINT [FK_Productos_Categoria] FOREIGN KEY([idCategoria])
+REFERENCES [dbo].[Categoria] ([idCategoria])
+GO
+ALTER TABLE [dbo].[Productos] CHECK CONSTRAINT [FK_Productos_Categoria]
+GO
+ALTER TABLE [dbo].[Venta]  WITH CHECK ADD  CONSTRAINT [FK_Venta_Cliente] FOREIGN KEY([idCliente])
+REFERENCES [dbo].[Cliente] ([idCliente])
+GO
+ALTER TABLE [dbo].[Venta] CHECK CONSTRAINT [FK_Venta_Cliente]
+GO
+USE [master]
+GO
+ALTER DATABASE [AlmacenElectro] SET  READ_WRITE 
+GO
